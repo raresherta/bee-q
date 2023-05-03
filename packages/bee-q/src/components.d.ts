@@ -15,6 +15,7 @@ import { TSliderType } from "./components/slider/bq-slider.types";
 import { TSpinnerSize, TSpinnerTextPosition } from "./components/spinner/bq-spinner.types";
 import { TStatusType } from "./components/status/bq-status.types";
 import { TSwitchInnerLabel, TSwitchJustifyContent } from "./components/switch/bq-swithc.types";
+import { TTagSize } from "./components/tag/bq-tag.types";
 import { FloatingUIPlacement } from "./services/interfaces";
 export { TAvatarShape, TAvatarSize } from "./components/avatar/bq-avatar.types";
 export { TBadgeSize } from "./components/badge/bq-badge.types";
@@ -26,6 +27,7 @@ export { TSliderType } from "./components/slider/bq-slider.types";
 export { TSpinnerSize, TSpinnerTextPosition } from "./components/spinner/bq-spinner.types";
 export { TStatusType } from "./components/status/bq-status.types";
 export { TSwitchInnerLabel, TSwitchJustifyContent } from "./components/switch/bq-swithc.types";
+export { TTagSize } from "./components/tag/bq-tag.types";
 export { FloatingUIPlacement } from "./services/interfaces";
 export namespace Components {
     /**
@@ -408,6 +410,21 @@ export namespace Components {
          */
         "value"?: string;
     }
+    interface BqTag {
+        /**
+          * If true, the button will be disabled (no interaction allowed)
+         */
+        "disabled": boolean;
+        "href": string;
+        /**
+          * If `true` it will display the tag with a remove icon
+         */
+        "removable": boolean;
+        /**
+          * The size of the tag
+         */
+        "size": TTagSize;
+    }
     interface BqTooltip {
         /**
           * Set the action when the tooltip should be displayed, on hover (default) or click
@@ -557,6 +574,12 @@ declare global {
         prototype: HTMLBqSwitchElement;
         new (): HTMLBqSwitchElement;
     };
+    interface HTMLBqTagElement extends Components.BqTag, HTMLStencilElement {
+    }
+    var HTMLBqTagElement: {
+        prototype: HTMLBqTagElement;
+        new (): HTMLBqTagElement;
+    };
     interface HTMLBqTooltipElement extends Components.BqTooltip, HTMLStencilElement {
     }
     var HTMLBqTooltipElement: {
@@ -576,6 +599,7 @@ declare global {
         "bq-spinner": HTMLBqSpinnerElement;
         "bq-status": HTMLBqStatusElement;
         "bq-switch": HTMLBqSwitchElement;
+        "bq-tag": HTMLBqTagElement;
         "bq-tooltip": HTMLBqTooltipElement;
     }
 }
@@ -996,6 +1020,21 @@ declare namespace LocalJSX {
          */
         "value"?: string;
     }
+    interface BqTag {
+        /**
+          * If true, the button will be disabled (no interaction allowed)
+         */
+        "disabled"?: boolean;
+        "href"?: string;
+        /**
+          * If `true` it will display the tag with a remove icon
+         */
+        "removable"?: boolean;
+        /**
+          * The size of the tag
+         */
+        "size"?: TTagSize;
+    }
     interface BqTooltip {
         /**
           * Set the action when the tooltip should be displayed, on hover (default) or click
@@ -1032,6 +1071,7 @@ declare namespace LocalJSX {
         "bq-spinner": BqSpinner;
         "bq-status": BqStatus;
         "bq-switch": BqSwitch;
+        "bq-tag": BqTag;
         "bq-tooltip": BqTooltip;
     }
 }
@@ -1067,6 +1107,7 @@ declare module "@stencil/core" {
              * They should provide immediate results, giving users the freedom to control their preferences as needed.
              */
             "bq-switch": LocalJSX.BqSwitch & JSXBase.HTMLAttributes<HTMLBqSwitchElement>;
+            "bq-tag": LocalJSX.BqTag & JSXBase.HTMLAttributes<HTMLBqTagElement>;
             "bq-tooltip": LocalJSX.BqTooltip & JSXBase.HTMLAttributes<HTMLBqTooltipElement>;
         }
     }

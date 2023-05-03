@@ -11,14 +11,14 @@ export default {
   },
   argTypes: {
     text: { control: 'text', table: { disable: true } },
+    size: { control: 'select', options: ['small', 'medium'] },
   },
   args: {
     text: 'text',
+    size: 'medium',
   },
 };
 
-const Template = (args) => {
-  return html`<bq-tag>${args.text}</bq-tag>`;
-};
+const Template = (args) => html` <bq-tag size=${args.size}> ${args.text} </bq-tag> `;
 
 export const Default = (args) => Template(args);

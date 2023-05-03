@@ -7,3 +7,31 @@
 :host {
   @apply block;
 }
+
+.bq-tag {
+  @apply bg-ui-secondary;
+  @apply hover:bg-ui-brand-hover active:bg-ui-brand-active;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px;
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  border-radius: 8px;
+}
+
+.bq-tag__prefix {
+  display: flex;
+}
+
+.size {
+  &--small {
+    @apply w-[var(--bq-tag--small-width)];
+  }
+
+  &--medium {
+    @apply w-[var(--bq-tag--medium-width)];
+  }
+}
